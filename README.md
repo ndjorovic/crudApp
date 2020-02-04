@@ -1,6 +1,12 @@
 # CrudApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+This project was generated with 
+[Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+[Node](https://nodejs.org/en) version 12.13.0 comand with nvm : nvm use 12
+
+## Install Dependecies
+Install node modules
+Run `npm install` 
 
 ## Development server
 
