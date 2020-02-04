@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AddEditContactComponent } from './components/edit-contact/add-edit-contact.component';
+import { AddEditContactComponent } from './components/add-edit-contact/add-edit-contact.component';
 
 @NgModule({
   declarations: [
