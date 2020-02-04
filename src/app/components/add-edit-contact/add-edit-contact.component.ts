@@ -11,16 +11,15 @@ import { Subscription } from 'rxjs';
 import { ContactService } from 'src/app/services/contact.service';
 import { IContact, Contact } from 'src/app/interfaces/contact-list.interface';
 
-
-
 @Component({
-  selector: 'app-edit-contact',
-  templateUrl: './edit-contact.component.html',
-  styleUrls: ['./edit-contact.component.scss']
+  selector: 'app-add-edit-contact',
+  templateUrl: './add-edit-contact.component.html',
+  styleUrls: ['./add-edit-contact.component.scss']
 })
-export class EditContactComponent implements OnInit, OnDestroy {
+export class AddEditContactComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   private id: number;
+  private formType: string
   private routeSubscribe: Subscription;
   private contactListsubs: Subscription;
 
@@ -48,20 +47,23 @@ export class EditContactComponent implements OnInit, OnDestroy {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       emails: new FormArray([], Validators.required),
-      phones: new FormArray([], Validators.required),
+      phones: new FormArray([], Validators.required)
     });
 
-    this.routeSubscribe = this.route.params.subscribe(
-      params => {
-        this.id = Number(params.id);
-        if (!isNaN(this.id)) {
-          this.getContact();
-        }
+    this.routeSubscribe = this.route.params.subscribe(params => {
+      this.id = Number(params.id);
+      if ((this.id)) {
+        this.getContact();
+        this.formType = 'update';
+      } else {
+        this.formType = 'create';
+        this.addEmail();
+        this.addPhone();
       }
-    );
+    });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   addEmail(value: string = '') {
     this.emailsFormGroup.push(new FormControl(value, Validators.required));
@@ -81,13 +83,21 @@ export class EditContactComponent implements OnInit, OnDestroy {
 
   submit() {
     const formValues = this.form.getRawValue();
-    const model = new Contact(this.id, formValues.firstName, formValues.lastName, formValues.emails, formValues.phones);
-    console.log(this.id)
+    const model = new Contact(
+      this.id,
+      formValues.firstName,
+      formValues.lastName,
+      formValues.emails,
+      formValues.phones
+    );
     if (isNaN(this.id)) {
-      this.contactService.createContact(model).subscribe(res => this.redirectToContacts());
+      this.contactService
+        .createContact(model)
+        .subscribe(res => this.redirectToContacts());
     } else {
-      console.log('update');
-      this.contactService.updateContact(model.id, model).subscribe(res => this.redirectToContacts());
+      this.contactService
+        .updateContact(model.id, model)
+        .subscribe(res => this.redirectToContacts());
     }
   }
 
@@ -105,8 +115,8 @@ export class EditContactComponent implements OnInit, OnDestroy {
             firstName: res.first_name,
             lastName: res.last_name
           });
-          res.email.forEach((mail) => this.addEmail(mail));
-          res.phone.forEach((phone) => this.addPhone(phone));
+          res.email.forEach(mail => this.addEmail(mail));
+          res.phone.forEach(phone => this.addPhone(phone));
         }
       });
   }
