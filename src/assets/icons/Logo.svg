@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60.1 (101010) - https://sketch.com -->
+    <title>7F76809C-2D82-45AA-8FCA-F6A3449DB717</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02.0---Home---Added" transform="translate(-130.000000, -15.000000)" fill-rule="nonzero">
+            <g id="Navbar">
+                <g id="Logo" transform="translate(130.000000, 15.000000)">
+                    <g id="bg">
+                        <rect id="Rectangle" fill="#FF0A0A" x="0" y="1.04347826" width="32.6086957" height="32.6086957"></rect>
+                        <rect id="Rectangle-Copy-5" fill="#FF0A0A" x="34.3478261" y="0" width="5.65217391" height="5.65217391"></rect>
+                        <rect id="Rectangle-Copy-6" fill="#000000" x="15.6521739" y="17.5652174" width="22.173913" height="22.173913"></rect>
+                        <rect id="Rectangle-Copy-15" fill="#000000" x="8.26086957" y="36.6956522" width="3.04347826" height="3.04347826"></rect>
+                    </g>
+                    <g id="icon" transform="translate(11.000000, 13.666667)">
+                        <rect id="Rectangle" fill="#FFFFFF" x="2.17391304" y="0" width="16.9565217" height="20" rx="3.04347826"></rect>
+                        <circle id="Oval" fill="#FF0A0A" cx="11.5217391" cy="8.04347826" r="2.82608696"></circle>
+                        <rect id="Rectangle" fill="#000000" x="0" y="5.65217391" width="3.91304348" height="1.73913043" rx="0.869565217"></rect>
+                        <rect id="Rectangle-Copy-7" fill="#000000" x="0" y="13.0434783" width="3.91304348" height="1.73913043" rx="0.869565217"></rect>
+                        <path d="M8.47826087,13.2608696 L14.5652174,13.2608696 C15.2855888,13.2608696 15.8695652,13.844846 15.8695652,14.5652174 C15.8695652,15.2855888 15.2855888,15.8695652 14.5652174,15.8695652 L8.47826087,15.8695652 C7.75788946,15.8695652 7.17391304,15.2855888 7.17391304,14.5652174 C7.17391304,13.844846 7.75788946,13.2608696 8.47826087,13.2608696 Z" id="Rectangle" stroke="#000000" stroke-width="1.30434783" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

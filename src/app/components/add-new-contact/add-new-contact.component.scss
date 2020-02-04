@@ -1,0 +1,66 @@
+@import './../../app.component.scss';
+
+.add-contact-page {
+  .link {
+    text-decoration: underline;
+    font-size: 14px;
+    color: $color-black;
+  }
+  .title {
+    font-size: 34px;
+    font-weight: bold;
+  }
+  .input {
+    padding: 20px;
+    box-sizing: border-box;
+    height: 50px;
+    width: 100%;
+    border: 1px solid $color-black;
+    background-color: $color-white;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+  }
+  .actions {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    img {
+      margin-right: 5px;
+      height: 22px;
+      width: 22px;
+    }
+  }
+
+  .button {
+    color: $color-white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.02px;
+    padding: 12px 64px;
+    cursor: pointer;
+  }
+  .red{
+    background: $color-red;
+  }
+  .disabled{
+    pointer-events:none;
+    background: gray;
+  }
+
+  .user-img {
+    height: 115px;
+    width: 177px;
+    border: 2px solid $color-red;
+    img {
+      margin-right: 10px;
+    }
+  }
+  .add-input-field {
+    position: relative;
+    .remove-field {
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 12px;
+    }
+  }
+}

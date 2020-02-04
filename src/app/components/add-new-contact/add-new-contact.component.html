@@ -1,0 +1,69 @@
+<div class="add-contact-page">
+  <a class="link" routerLink="/contacts">Return to Contacts</a>
+  <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+    <h1 class="title">Add Contact</h1>
+    <a  [className]="!form.valid ? 'button red disabled': 'button red'" (click)="submit()">Save</a>
+  </div>
+  <div class="row justify-content-center">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="user-img d-flex justify-content-center align-items-center mb-4"><img
+          src="./assets/icons/Add_photo.svg"> Add photo</div>
+      <div class="form-row mb-1">
+        <div class="form-group col-md-6">
+          <input class="input" formControlName="first_name" placeholder="First name">
+          <p class="text-danger"
+            *ngIf="form.controls.first_name.invalid && (form.controls.first_name.dirty || form.controls.first_name.touched) && form.controls.first_name.errors.required">
+            Name is required.
+          </p>
+        </div>
+        <!-- <div class="form-group col-md-6">
+          <input class="input" formControlName="last_name" placeholder="Last name">
+          <p class="text-danger"
+          *ngIf="lastName.invalid && (lastName.dirty || lastName.touched) && lastName.errors.required">
+          Name is required.
+        </p>
+        </div> -->
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div formArrayName="email">
+            <div *ngFor="let email of emailsFormGroup.controls; let i = index;">
+              <div [formGroupName]="i">
+                <div class="add-input-field">
+                  <input class="input mb-4" formControlName="email" placeholder="Email">
+
+                  <span class="remove-field" (click)="removeEmail(i)"><img src="./assets/icons/x.svg"> </span>
+                  <p class="text-danger"
+                    *ngIf="getEmailsFormGroup(i).controls['email'].touched && getEmailsFormGroup(i).controls['email'].hasError('required')">
+                    Email is required!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="actions d-flex align-items-center" (click)="addEmail()"><img src="./assets/icons/plus.svg"> Add
+            email</span>
+        </div>
+        <div class="form-group col-md-6">
+          <div formArrayName="phone">
+            <div *ngFor="let phone of phonesFormGroup.controls; let i = index;">
+              <div [formGroupName]="i">
+                <div class="add-input-field">
+                  <input class="input mb-4" formControlName="phone" placeholder="phone">
+                  <span class="remove-field" (click)="removePhone(i)"><img src="./assets/icons/x.svg"> </span>
+                  <p class="text-danger"
+                    *ngIf="getPhonesFormGroup(i).controls['phone'].touched && getPhonesFormGroup(i).controls['phone'].hasError('required')">
+                    Phone is required!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <span class="actions" (click)="addPhone()"><img src="./assets/icons/plus.svg"> Add phone number</span>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!form.valid" style="display:none">hidden submit</button>
+    </form>
+  </div>
+</div>
