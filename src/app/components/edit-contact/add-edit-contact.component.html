@@ -1,8 +1,9 @@
 <div class="add-contact-page">
   <a class="link" routerLink="/contacts">Return to Contacts</a>
   <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
-    <h1 class="title">Edit Contact</h1>
-    <button class="button red" (click)="submit()" [disabled]="form.invalid">Save</button>
+    <h1 class="title" *ngIf="formType == 'update'">Edit Contact</h1>
+    <h1 class="title" *ngIf="formType == 'create'">Create Contact</h1>
+    <button  [ngClass]="!form.invalid ?'button red':'button disabled'"  (click)="submit()" [disabled]="form.invalid">Save</button>
   </div>
   <div class="row justify-content-center">
     <form [formGroup]="form" (ngSubmit)="submit()">
@@ -28,13 +29,12 @@
         <div class="form-group col-md-6">
           <div formArrayName="emails">
             <div *ngFor="let email of emailsFormGroup.controls; let i = index;">
-                <div class="add-input-field">
-                  <input class="input mb-4" [formControlName]="i" placeholder="Email">
-                  <span class="remove-field" (click)="removeEmail(i)"><img src="./assets/icons/x.svg"> </span>
-                  <p class="text-danger"
-                    *ngIf="email.touched && email.hasError('required')">
-                    Email is required!
-                  </p>
+              <div class="add-input-field">
+                <input class="input mb-4" [formControlName]="i" placeholder="Email">
+                <span class="remove-field" (click)="removeEmail(i)"><img src="./assets/icons/x.svg"> </span>
+                <p class="text-danger" *ngIf="email.touched && email.hasError('required')">
+                  Email is required!
+                </p>
               </div>
             </div>
           </div>
@@ -43,28 +43,15 @@
         </div>
         <div class="form-group col-md-6">
           <div formArrayName="phones">
-              <div *ngFor="let phone of phonesFormGroup.controls; let i = index;">
-                  <div class="add-input-field">
-                    <input class="input mb-4" [formControlName]="i" placeholder="Phone">
-                    <span class="remove-field" (click)="removePhone(i)"><img src="./assets/icons/x.svg"> </span>
-                    <p class="text-danger"
-                      *ngIf="phone.touched && phone.hasError('required')">
-                      Phone is required!
-                    </p>
-                </div>
-              </div>
-            <!-- <div *ngFor="let phone of phonesFormGroup.controls; let i = index;">
-              <div [formGroupName]="i">
-                <div class="add-input-field">
-                  <input class="input mb-4" [formControlName]="i" placeholder="Phone">
-                  <span class="remove-field" (click)="removePhone(i)"><img src="./assets/icons/x.svg"> </span>
-                  <p class="text-danger"
-                  *ngIf="phone.touched && phone.hasError('required')">
-                  Email is required!
+            <div *ngFor="let phone of phonesFormGroup.controls; let i = index;">
+              <div class="add-input-field">
+                <input class="input mb-4" [formControlName]="i" placeholder="Phone">
+                <span class="remove-field" (click)="removePhone(i)"><img src="./assets/icons/x.svg"> </span>
+                <p class="text-danger" *ngIf="phone.touched && phone.hasError('required')">
+                  Phone is required!
                 </p>
-                </div>
               </div>
-            </div> -->
+            </div>
           </div>
           <span class="actions" (click)="addPhone()"><img src="./assets/icons/plus.svg"> Add phone number</span>
         </div>
@@ -73,7 +60,7 @@
     </form>
   </div>
   <div class="d-flex justify-content-center mt-5">
-    <div class="button black" data-toggle="modal" data-target="#exampleModal">Delete </div>
+    <div *ngIf="formType == 'update'" class="button black" data-toggle="modal" data-target="#exampleModal">Delete </div>
   </div>
 </div>
 
@@ -89,7 +76,7 @@
         </div>
         <div class="d-flex justify-content-center">
           <div class="button white mr-5" data-dismiss="modal">Cancel</div>
-          <div class="button red" data-dismiss="modal" (click)="deleteContact()">Save</div>
+          <div class="button red" data-dismiss="modal" (click)="deleteContact()">Delete</div>
         </div>
       </div>
     </div>

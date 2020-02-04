@@ -1,4 +1,5 @@
 @import './../../app.component.scss';
+@import './../../../assets/styles/colors.scss';
 
 .contact-page {
   .title {
@@ -55,15 +56,13 @@
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    img{
+    img {
       position: absolute;
       left: 21px;
       top: 22px;
-    } 
+    }
   }
-  .black{
+  .black {
     background: $color-black;
   }
 }
-
-

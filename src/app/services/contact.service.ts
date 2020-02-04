@@ -60,15 +60,15 @@ export class ContactService {
 
   updateContact(id, model) {
     this.contactLists = this.contactListSubject.getValue();
-    model.id = id;
-    this.contactLists[id+1] = model;
+    const index = this.contactLists.indexOf(this.contactLists.find(item => item.id === id));
+    this.contactLists[index] = model;
     return this.saveContactInLocaleStorage(this.contactLists);
   }
 
   deleteContact(index) {
     this.contactLists = this.contactListSubject.getValue();
     const newContactArray = this.contactLists.filter((element, id) => {
-      return id != index;
+      return element.id !== index;
     });
     return this.saveContactInLocaleStorage(newContactArray);
   }
